@@ -10,11 +10,13 @@ const dbService = require('./data/DatabaseService')
 const WalletRepository = require('./repository/walletRepository')
 const WalletHandlers = require('./handler/walletHandler')
 const WalletUseCase = require('./domain/walletUseCase');
+const ExpensesHandler = require('./handler/expenseHandler');
 
 const walletRepository = new WalletRepository(dbService);
 const walletUseCase = new WalletUseCase(walletRepository);
 
 const walletHandler = new WalletHandlers(walletUseCase);
+const expensesHandler = new ExpensesHandler();
 
 app.use(express.json());
 

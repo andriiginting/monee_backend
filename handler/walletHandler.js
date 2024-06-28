@@ -7,11 +7,13 @@ class WalletHandlers {
 
     async getWalletInformation(req, res) {
         const walletData = await this.walletUseCase.getWalletData();
-        console.log("usecase:"+walletData)
+
         let code = 200;
         let payload = {};
-        if(walletData.length != 0) {
-            payload = walletData
+        if(walletData.length >= 0) {
+            payload = {
+                wallet: walletData
+            }
         } else {
             code = 404
             payload = {
